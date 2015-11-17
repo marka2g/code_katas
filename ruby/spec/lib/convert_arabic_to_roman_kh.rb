@@ -1,5 +1,7 @@
-describe "Converting arabic numbers to roman numerals" do
+def convert(in_arabic)
+end
 
+describe "Converting arabic numbers to roman numerals" do
   # degenerate case - this bounds to the nothing or nil transformation from the transformation priority premise
   # right now i don't have anything, by focusing on the nothing case i can get my initial structure setup
   # so, i can setup how to test, what the method name is, etc.
