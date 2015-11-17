@@ -1,15 +1,16 @@
-CONVERSION_FACTORS = [[5, "V"], [1, "I"]]
+# now, we can add to our constants because at this point we have our algorithm. the design is fairly complete.
+# now we focus on adding verification tests to drive out the missing requirements.  namely, the rest of the conversion factors
+CONVERSION_FACTORS = [
+  [5, "V"],
+  [1, "I"]
+]
 
 def conversion_factors_for(in_arabic)
-  # we can do better by separating the responsibility of looking up the conversion factors from creating the factors themselves.
-  # lets extract into a constant
   CONVERSION_FACTORS.find {|arabic, _| arabic <= in_arabic}
 end
 
 def convert(in_arabic)
   return "" if in_arabic.zero?
-  # this needs way more abstraction...  too specific on implementation details.  we need an abstraction method to give ourselves a nice
-  # explanation for what we're doing.
   arabic, roman = conversion_factors_for(in_arabic)
   roman + convert(in_arabic - arabic)
 end
@@ -25,8 +26,9 @@ describe "Converting arabic numbers to roman numerals" do
 
   {
     1 => "I",
+    2 => "II",
     5 => "V",
-    2 => "II"
+    10 => "X"
   }.each_pair do |arabic, roman|
     it "converts #{arabic} to #{roman}" do
       expect(convert(arabic)).to eq(roman)
