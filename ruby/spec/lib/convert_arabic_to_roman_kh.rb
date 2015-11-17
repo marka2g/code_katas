@@ -2,7 +2,9 @@ def convert(in_arabic)
   return "" if in_arabic.zero?
   return "I" if in_arabic == 1
   return "V" if in_arabic == 5
-  "II"
+  # theres some duplication here which is actually gonna get us to the final algrithm. the II is actually made of 2 parts.
+  # just like 2 is... the second "I" can be considered the same as converting the 1
+  "I" + "I"
 end
 
 describe "Converting arabic numbers to roman numerals" do
@@ -28,7 +30,6 @@ describe "Converting arabic numbers to roman numerals" do
   # 2 can be thought of as a vector or array of 1's.  according to the TPP, this is much more complex than a simple constant or even a scalar
   # we're gonna get this passing with our usual technique of guard clause + returning a constant. then we'll get into the refactoring phase which is where the
   # real excitement of this algorithm comes into play.
-
 
 end
 
