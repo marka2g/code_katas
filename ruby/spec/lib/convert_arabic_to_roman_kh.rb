@@ -1,4 +1,14 @@
 describe "Converting arabic numbers to roman numerals" do
+
+  # degenerate case - this bounds to the nothing or nil transformation from the transformation priority premise
+  # right now i don't have anything, by focusing on the nothing case i can get my initial structure setup
+  # so, i can setup how to test, what the method name is, etc.
+  # TDD focuses on a very tight feedback loop; run tests as often as possible.
+  context "Romans don't have 0" do
+    it "converts 0 to a blank string" do
+      expect(convert(0)).to eq("")
+    end
+  end
 end
 
 
