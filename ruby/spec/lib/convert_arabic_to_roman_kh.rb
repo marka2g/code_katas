@@ -1,4 +1,5 @@
 def convert(in_arabic)
+  ""
 end
 
 describe "Converting arabic numbers to roman numerals" do
