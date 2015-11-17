@@ -1,32 +1,31 @@
 def convert(in_arabic)
   return "" if in_arabic.zero?
-  # here i'm essentially testing against the nil case; a gaurd clause to the rescue!
-  return "I" if in_arabic == 1 # convert(5) -> expected: "V", got nil
-  # now we are back to an expectation failure around nil so we can use the nil to constant transformation to
-  # get this passing
+  return "I" if in_arabic == 1
   "V"
 end
 
 describe "Converting arabic numbers to roman numerals" do
 
   context "Romans don't have 0" do
-
     # degenerate case
     it "converts 0 to a blank string" do
       expect(convert(0)).to eq("")
     end
+  end
 
-    # 1st rule based case
-    it "converts 1 to I" do
-      expect(convert(1)).to eq("I")
-    end
-
-    # up to now it was simple.  here is when we make the first decision.  2 is too complex because it implies a vector or
-    # array of 1's - i.e. 2 -> II  lets use something more simple, say, 5 -> V
-    # another factor to move on is that fact that i can create this test by a simple copy, search and replace
-      # this excentuates the fact that the test for 5 is a constant, just like 1.
-    it "converts 5 to V" do
-      expect(convert(5)).to eq("V")
+  # in the previous two tests, that fact that i can do a straight copy of 1 to 5 & I to V
+  # shows me that there is some duplication here.  the duplication isn't really in the test case
+  # as much as it in about the 'knowledge' about testing the rules. so, when talking about design, CH
+  # falls back to the 4 rules about simple design. in this case, we see duplication about 'how to test' so,
+  # lets eliminate that duplication right away. this allows us to extract out the 'what' we are testing from the 'how'
+  # we are testing it. really drawing our attention to the rules of the algorithm, rather than having to sort thru
+  # unneccesary noise to see them.
+  {
+    1 => "I",
+    5 => "V"
+  }.each_pair do |arabic, roman|
+    it "converts #{arabic} to #{roman}" do
+      expect(convert(arabic)).to eq(roman)
     end
   end
 end
