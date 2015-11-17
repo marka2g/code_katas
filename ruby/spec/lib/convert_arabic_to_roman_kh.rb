@@ -6,12 +6,14 @@ describe "Converting arabic numbers to roman numerals" do
 
   context "Romans don't have 0" do
 
-    # degenerate case - this bounds to the nothing or nil transformation from the transformation priority premise
-    # right now i don't have anything, by focusing on the nothing case i can get my initial structure setup
-    # so, i can setup how to test, what the method name is, etc.
-    # TDD focuses on a very tight feedback loop; run tests as often as possible.
+    # degenerate case
     it "converts 0 to a blank string" do
       expect(convert(0)).to eq("")
+    end
+
+    # 1st rule based case - next example is the one that adds variation to my system after setting up the structure with a degenerate case
+    it "converts 1 to I" do
+      expect(convert(1)).to eq("I")
     end
   end
 end
