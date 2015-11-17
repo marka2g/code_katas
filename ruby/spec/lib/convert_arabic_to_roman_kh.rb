@@ -3,8 +3,9 @@ def convert(in_arabic)
   return "I" if in_arabic == 1
   return "V" if in_arabic == 5
   # theres some duplication here which is actually gonna get us to the final algrithm. the II is actually made of 2 parts.
-  # just like 2 is... the second "I" can be considered the same as converting the 1
-  "I" + convert(1)
+  # just like 2 is... the second "I" can be considered the same as converting the 1.
+  # the first 'I' is really there because we are more than 1, that is 2. and the 1 is actually what is left when we remove the first part of the 2
+  "I" + convert(in_arabic - 1)
 end
 
 describe "Converting arabic numbers to roman numerals" do
