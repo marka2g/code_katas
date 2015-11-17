@@ -1,6 +1,7 @@
 # now, we can add to our constants because at this point we have our algorithm. the design is fairly complete.
 # now we focus on adding verification tests to drive out the missing requirements.  namely, the rest of the conversion factors
 CONVERSION_FACTORS = [
+  [100, "C"],
   [50, "L"],
   [10, "X"],
   [5, "V"],
@@ -31,7 +32,8 @@ describe "Converting arabic numbers to roman numerals" do
     2 => "II",
     5 => "V",
     10 => "X",
-    50 => "L"
+    50 => "L",
+    100 => "C"
   }.each_pair do |arabic, roman|
     it "converts #{arabic} to #{roman}" do
       expect(convert(arabic)).to eq(roman)
