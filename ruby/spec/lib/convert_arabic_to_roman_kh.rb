@@ -1,10 +1,11 @@
-# now, we can add to our constants because at this point we have our algorithm. the design is fairly complete.
-# now we focus on adding verification tests to drive out the missing requirements.  namely, the rest of the conversion factors
+# in some implementations that CH has seen, there's alot of effort put in to calculating the 4, the IV.  ...and thus the 9(IX) as offsets.  however,
+# CH thinks that adds complexity to the algorith hides an important aspect of the roman numeral counting system.
+# ** by keeping the the IV, IX, etc in our conversion chart, we provide a clear documantation of how roman numerals look.
+# now since we are moving now to varification oriented tests, i wanna make sure that the important parts, the conversion list and the example list are readily accessible.
+# adding more conversions to the list is going to drop the conversion list down the page, forcing me to scroll back and forth.  CH now splits his window to keep things ni sight.  by adding 6 -> VI, i wanna make sure that the recursion and the lookup work well together when i'm converting two diff types of numbers.  CH expects this to work out of the gate. 6 => "VI"
 CONVERSION_FACTORS = [
-  [100, "C"],
-  [50, "L"],
-  [10, "X"],
   [5, "V"],
+  [4, "IV"],
   [1, "I"]
 ]
 
@@ -32,9 +33,7 @@ describe "Converting arabic numbers to roman numerals" do
     2 => "II",
     4 => "IV",
     5 => "V",
-    10 => "X",
-    50 => "L",
-    100 => "C"
+    6 => "VI"
   }.each_pair do |arabic, roman|
     it "converts #{arabic} to #{roman}" do
       expect(convert(arabic)).to eq(roman)
