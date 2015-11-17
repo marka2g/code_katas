@@ -1,11 +1,18 @@
 def convert(in_arabic)
   return "" if in_arabic.zero?
-  return "I" if in_arabic == 1
   return "V" if in_arabic == 5
-  # theres some duplication here which is actually gonna get us to the final algrithm. the II is actually made of 2 parts.
-  # just like 2 is... the second "I" can be considered the same as converting the 1.
-  # the first 'I' is really there because we are more than 1, that is 2. and the 1 is actually what is left when we remove the first part of the 2
-  "I" + convert(in_arabic - 1)
+  # the "I" and the 1 below are effectively representations of the same thing. perhaps we can think of them as conversion factors.
+  # it makes sense to group them into a single entity there.
+  arabic, roman = [1, "I"] #we are specifying the conversion factor is the same idea as line 3, just in a different format.
+  # here we fall back on a technique we've seen before. introducing duplication in order to coax the algorithm into a simpler form.
+  roman + convert(in_arabic - arabic)
+  # to keep going, we add to the complexity of the algorithm by driving out some explicit duplication.
+  # i.o.w - "I" is really the same thing as one of our return and gaurd statements return "I" if in_arabic == 1 contains the same knowledge of what we just
+  # wrote on line 5. since 1 - 1 is 0, and the recursive call will yield an empty string. so, shifting the code the way we did allows us to delete line 3. test still passes
+  # at each small incremental test, we are rerunning our test and varifying that they are green.  this has a couple benefits:
+    # 1. we can see that we truely aren't changing any behavior.
+    # 2. if we make a mistake, we can just undo our last change.  when refactoring, we should be keeping our tests green at each incremental step.
+
 end
 
 describe "Converting arabic numbers to roman numerals" do
