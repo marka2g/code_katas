@@ -2,6 +2,9 @@ def convert(in_arabic)
   # ""
   # as we move forward getting subsequent examples to pass, we want to make sure to not have previous examples start failing
   return "" if in_arabic.zero? #this is a guard clause - CH uses this alot as a technique to 'wall off' the previous code
+  # also note that the first failure we got was a bad value.  we expected "I" but got empty string, while this one takes us back to nil
+  # nil to constant is a wonderfully simple transformation according to TPP. we can enact that transformation to get this example passing
+  "I"
 end
 
 describe "Converting arabic numbers to roman numerals" do
