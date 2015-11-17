@@ -4,7 +4,7 @@ def convert(in_arabic)
   return "V" if in_arabic == 5
   # theres some duplication here which is actually gonna get us to the final algrithm. the II is actually made of 2 parts.
   # just like 2 is... the second "I" can be considered the same as converting the 1
-  "I" + "I"
+  "I" + convert(1)
 end
 
 describe "Converting arabic numbers to roman numerals" do
