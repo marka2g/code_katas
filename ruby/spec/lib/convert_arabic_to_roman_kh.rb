@@ -30,6 +30,7 @@ describe "Converting arabic numbers to roman numerals" do
   {
     1 => "I",
     2 => "II",
+    4 => "IV",
     5 => "V",
     10 => "X",
     50 => "L",
