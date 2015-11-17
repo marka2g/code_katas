@@ -1,9 +1,12 @@
 def convert(in_arabic)
   return "" if in_arabic.zero?
-  return "V" if in_arabic == 5
+  # return "V" if in_arabic == 5 # now we can delete line 3
   # the "I" and the 1 below are effectively representations of the same thing. perhaps we can think of them as conversion factors.
   # it makes sense to group them into a single entity there.
-  arabic, roman = [1, "I"] #we are specifying the conversion factor is the same idea as line 3, just in a different format.
+  #we are specifying the conversion factor is the same idea as line 3, just in a different format.
+  # the order is important tho.  we'll have to be careful to grab the 5 in the right place and grab it when appropriate, thats
+  # why we use the '<=' . because we wanna find the 5 when we have 5 but the 1 when we have 2 or 1.
+  arabic, roman = [[5, "V"], [1, "I"]].find {|arabic, _| arabic <= in_arabic} #side note, '_' is used to explicitly tell us that lookup is not dependent on the second part of the array (roman equiv).
   # here we fall back on a technique we've seen before. introducing duplication in order to coax the algorithm into a simpler form.
   roman + convert(in_arabic - arabic)
   # to keep going, we add to the complexity of the algorithm by driving out some explicit duplication.
