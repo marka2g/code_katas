@@ -1,0 +1,18 @@
+source 'http://rubygems.org'
+ruby '2.2.3'
+
+gem 'pry'
+
+group :development do
+  gem 'rspec'
+
+  # Autotest
+  # --> autotest
+  gem 'rspec-autotest'
+  gem 'autotest-standalone'
+
+  # Guard
+  # --> guard init rspec (generates Guardfile)
+  # --> bundle exec guard
+  gem 'guard-rspec', require: false
+end
