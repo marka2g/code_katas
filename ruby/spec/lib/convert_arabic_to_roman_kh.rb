@@ -1,7 +1,8 @@
 def convert(in_arabic)
   return "" if in_arabic.zero?
   return "I" if in_arabic == 1
-  "V"
+  return "V" if in_arabic == 5
+  "II"
 end
 
 describe "Converting arabic numbers to roman numerals" do
@@ -13,21 +14,22 @@ describe "Converting arabic numbers to roman numerals" do
     end
   end
 
-  # in the previous two tests, that fact that i can do a straight copy of 1 to 5 & I to V
-  # shows me that there is some duplication here.  the duplication isn't really in the test case
-  # as much as it in about the 'knowledge' about testing the rules. so, when talking about design, CH
-  # falls back to the 4 rules about simple design. in this case, we see duplication about 'how to test' so,
-  # lets eliminate that duplication right away. this allows us to extract out the 'what' we are testing from the 'how'
-  # we are testing it. really drawing our attention to the rules of the algorithm, rather than having to sort thru
-  # unneccesary noise to see them.
   {
     1 => "I",
-    5 => "V"
+    5 => "V",
+    2 => "II"
   }.each_pair do |arabic, roman|
     it "converts #{arabic} to #{roman}" do
       expect(convert(arabic)).to eq(roman)
     end
   end
+
+  # now its time to bump up the complexity a bit. lets move up to something much more complicated than a constant, the II
+  # 2 can be thought of as a vector or array of 1's.  according to the TPP, this is much more complex than a simple constant or even a scalar
+  # we're gonna get this passing with our usual technique of guard clause + returning a constant. then we'll get into the refactoring phase which is where the
+  # real excitement of this algorithm comes into play.
+
+
 end
 
 
