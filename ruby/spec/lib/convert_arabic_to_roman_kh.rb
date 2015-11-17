@@ -1,6 +1,7 @@
 # now, we can add to our constants because at this point we have our algorithm. the design is fairly complete.
 # now we focus on adding verification tests to drive out the missing requirements.  namely, the rest of the conversion factors
 CONVERSION_FACTORS = [
+  [50, "L"],
   [10, "X"],
   [5, "V"],
   [1, "I"]
