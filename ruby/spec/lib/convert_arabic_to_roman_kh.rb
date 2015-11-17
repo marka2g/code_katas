@@ -1,6 +1,10 @@
 def convert(in_arabic)
   return "" if in_arabic.zero?
-  "I"
+  # here i'm essentially testing against the nil case; a gaurd clause to the rescue!
+  return "I" if in_arabic == 1 # convert(5) -> expected: "V", got nil
+  # now we are back to an expectation failure around nil so we can use the nil to constant transformation to
+  # get this passing
+  "V"
 end
 
 describe "Converting arabic numbers to roman numerals" do
@@ -20,7 +24,7 @@ describe "Converting arabic numbers to roman numerals" do
     # up to now it was simple.  here is when we make the first decision.  2 is too complex because it implies a vector or
     # array of 1's - i.e. 2 -> II  lets use something more simple, say, 5 -> V
     # another factor to move on is that fact that i can create this test by a simple copy, search and replace
-      # this excentuates the fact that the test for 5 is a constant, just like 1. 
+      # this excentuates the fact that the test for 5 is a constant, just like 1.
     it "converts 5 to V" do
       expect(convert(5)).to eq("V")
     end
