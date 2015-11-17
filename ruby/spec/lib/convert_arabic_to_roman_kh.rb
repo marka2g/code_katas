@@ -1,5 +1,7 @@
 def convert(in_arabic)
-  ""
+  # ""
+  # as we move forward getting subsequent examples to pass, we want to make sure to not have previous examples start failing
+  return "" if in_arabic.zero? #this is a guard clause - CH uses this alot as a technique to 'wall off' the previous code
 end
 
 describe "Converting arabic numbers to roman numerals" do
