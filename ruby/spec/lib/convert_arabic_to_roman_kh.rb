@@ -1,5 +1,9 @@
+CONVERSION_FACTORS = [[5, "V"], [1, "I"]]
+
 def conversion_factors_for(in_arabic)
-  [[5, "V"], [1, "I"]].find {|arabic, _| arabic <= in_arabic}
+  # we can do better by separating the responsibility of looking up the conversion factors from creating the factors themselves.
+  # lets extract into a constant
+  CONVERSION_FACTORS.find {|arabic, _| arabic <= in_arabic}
 end
 
 def convert(in_arabic)
